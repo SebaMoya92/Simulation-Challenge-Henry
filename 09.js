@@ -24,9 +24,20 @@ function filtrar(funcion) {
   // productos.filtrar(function(p) {
   //   return p.price >= 50;
   // }) => [{price: 100, name:'tv'}]
+  // Definir el método antes de ejecutar
+  Array.prototype.filtrar = function (cb) {
+    let newArray = [];
 
-};
+    this.forEach((item) => {
+      if (cb(item)) {
+        newArray.push(item);
+      }
+    });
+
+    return newArray;
+  };
+}
 
 // No modifiques nada debajo de esta linea //
 
-module.exports = filtrar
+module.exports = filtrar;
